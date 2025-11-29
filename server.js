@@ -11,7 +11,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-    console.log(`To stop the server, press Ctrl+C`);
-});
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+        console.log(`To stop the server, press Ctrl+C`);
+    });
+}
+
+module.exports = app;
